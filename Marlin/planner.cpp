@@ -55,7 +55,6 @@
 #include "planner.h"
 #include "stepper.h"
 #include "temperature.h"
-#include "ultralcd.h"
 #include "language.h"
 
 //===========================================================================
@@ -75,26 +74,10 @@ float max_e_jerk;
 float mintravelfeedrate;
 unsigned long axis_steps_per_sqr_second[NUM_AXIS];
 
-#ifdef ENABLE_AUTO_BED_LEVELING
-// this holds the required transform to compensate for bed level
-matrix_3x3 plan_bed_level_matrix = {
-	1.0, 0.0, 0.0,
-	0.0, 1.0, 0.0,
-	0.0, 0.0, 1.0,
-};
-#endif // #ifdef ENABLE_AUTO_BED_LEVELING
-
 // The current position of the tool in absolute steps
 long position[4];   //rescaled from extern when axis_steps_per_unit are changed by gcode
 static float previous_speed[4]; // Speed of previous path line segment
 static float previous_nominal_speed; // Nominal speed of previous path line segment
-
-#ifdef AUTOTEMP
-float autotemp_max=250;
-float autotemp_min=210;
-float autotemp_factor=0.1;
-bool autotemp_enabled=false;
-#endif
 
 //===========================================================================
 //=================semi-private variables, used in inline  functions    =====

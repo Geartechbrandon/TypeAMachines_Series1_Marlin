@@ -5,3 +5,5 @@ Goals:
 Optimize Marlin, anrduino firmware for 3D printers, to reach a higher state of reliability and function.
 
 Generating Devel Branch for change pull requests.
+
+Generating clean-up branch to start removing features and code not used with the TAM series1 printers.
